@@ -1,0 +1,20 @@
+{
+  "name": "web-proof-generator",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "scripts": {
+    "dev": "bun run index.ts",
+    "build": "bun build index.ts --outdir dist --target bun"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@vlayer/sdk": "^1.0.2-nightly-20250530-3f01bfdcfb6b20d608f7bcef25f9907164ad3966",
+    "fastify": "^5.3.3"
+  }
+}
