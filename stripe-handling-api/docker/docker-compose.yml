@@ -1,0 +1,36 @@
+services:
+  pledger:
+    image: ghcr.io/stupside/0x-collateral-backend/pledger:latest
+    container_name: pledger
+    restart: unless-stopped
+    ports:
+      - 8081:8081
+    volumes:
+      - ./config.yml:/app/config.yml
+    command: --config=/app/config.yml
+    labels:
+      com.centurylinklabs.watchtower.enable: true
+    networks:
+      - cloudflared
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30 --cleanup --label-enable
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    restart: unless-stopped
+    volumes:
+      - ./cloudflared:/etc/cloudflared
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TOKEN}
+    networks:
+      - cloudflared
+
+networks:
+  cloudflared:
+    name: cloudflared

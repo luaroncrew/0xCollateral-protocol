@@ -1,0 +1,14 @@
+server:
+  port: 8081
+  host: 0.0.0.0
+options:
+  stripe:
+
+    webhook:
+    frontend:
+    cancel:
+      url: https://0x-frontend.xonery.dev/payment/cancel
+    success:
+      url: https://0x-frontend.xonery.dev/payment/success
+  collateral:
+    url: https://0x-collateral.xonery.dev

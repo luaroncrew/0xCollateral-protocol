@@ -1,0 +1,28 @@
+version: "3"
+
+vars:
+  CMD: '{{.CMD}}'
+  PORT: '{{.PORT}}'
+  VERSION: '{{.VERSION}}'
+  CONFIG_FILE_PATH: ./config/{{.CMD}}.yml
+
+tasks:
+  run:
+    desc: Run the server using Go (use CMD=commandname)
+    cmds:
+      - go run cmd/{{.CMD}}/main.go --config={{.CONFIG_FILE_PATH}}
+    silent: true
+
+  docker:run:
+    desc: Run the Docker container (use CMD=commandname)
+    deps: [docker:build]
+    cmds:
+      - docker run --rm -p {{.PORT}}:{{.PORT}} -v {{.CONFIG_FILE_PATH}}:/app/config.yml --name {{.CMD}} {{.CMD}}:latest --config=/app/config.yml
+    silent: true
+    
+  docker:build:
+    desc: Build the Docker image (use CMD=commandname)
+    cmds:
+      - docker build -t {{.CMD}}:latest -f docker/server.Dockerfile --build-arg VERSION={{.VERSION}} --build-arg CMD={{.CMD}} .
+    silent: true
+
