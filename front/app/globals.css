@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    --radius: 0.75rem;
+
+    --borrow-color: 142 76% 36%;
+    --lend-color: 280 100% 30%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+    body {
+      @apply bg-background text-foreground;
+      background-image: linear-gradient(to bottom right,
+          rgba(255, 237, 242, 0.3),
+          rgba(245, 247, 255, 0.3),
+          rgba(237, 246, 255, 0.3));
+      min-height: 100vh;
+    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-space-grotesk font-bold;
+  }
+}
+
+.gradient-borrow {
+  background: radial-gradient(122.64% 113.99% at 50% 50%, #5aff8852 0, #5aff8800 100%);
+}
+
+.gradient-lend {
+  background: radial-gradient(129.96% 104.38% at 43.18% 37.89%, #d16fff33 0, #fc6fff0a 100%);
+}
+
+.gradient-button-borrow {
+  background: linear-gradient(135deg, rgba(38, 194, 129, 0.9), rgba(38, 194, 129, 1));
+}
+
+.gradient-button-lend {
+  background: linear-gradient(135deg, rgba(170, 0, 255, 0.8), rgba(170, 0, 255, 1));
+}
+
+.gradient-button-borrow:hover,
+.gradient-button-lend:hover {
+  filter: brightness(1.05);
+}
+
+.gradient-button-outline-borrow {
+  background: linear-gradient(135deg, rgba(38, 194, 129, 0.1), rgba(38, 194, 129, 0.05));
+  border: 1px solid rgba(38, 194, 129, 0.3);
+}
+
+.gradient-button-outline-lend {
+  background: linear-gradient(135deg, rgba(170, 0, 255, 0.1), rgba(170, 0, 255, 0.05));
+  border: 1px solid rgba(170, 0, 255, 0.3);
+}
+
+.gradient-button-outline-borrow:hover {
+  background: linear-gradient(135deg, rgba(38, 194, 129, 0.15), rgba(38, 194, 129, 0.1));
+}
+
+.gradient-button-outline-lend:hover {
+  background: linear-gradient(135deg, rgba(170, 0, 255, 0.15), rgba(170, 0, 255, 0.1));
+}
