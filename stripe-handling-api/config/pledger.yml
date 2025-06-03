@@ -3,9 +3,10 @@ server:
   host: 0.0.0.0
 options:
   stripe:
-
+    key: sk_test_xxxXxXxXxXxXxXxXxXxXxXx
     webhook:
-    frontend:
+      secret: whsec_xxxXxXxXxXxXxXxXxXxXx
+  frontend:
     cancel:
       url: https://0x-frontend.xonery.dev/payment/cancel
     success:
